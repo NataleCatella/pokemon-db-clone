@@ -1,28 +1,26 @@
 'use client'
 
 import React from "react";
-import styled from "styled-components";
+import * as S from "./MainNav.styled";
+import * as SB from "../Button/Button.styled";
+import Link from "next/link";
 
 const MainNav: React.FC = () => {
-  return <StMainNAv>
-    <h1>Logo</h1>
-    <ul>
-      <li>Home</li>
-      <li>About</li>
-      <li>Services</li>
-      <li>Contact</li>
-    </ul>
-  </StMainNAv>;
+  return <S.Wrapper>
+    <S.LogoContainer>Logo</S.LogoContainer>
+    <S.LinksList>
+      <S.LinkLi>
+        <SB.Button as={Link} href="/pokemon-list" $size="small" $variant="default">Pokemon List</SB.Button>
+      </S.LinkLi>
+      <S.LinkLi>
+        <SB.Button as={Link} href="/berries" $variant="outline">Berries</SB.Button>
+      </S.LinkLi>
+      <S.LinkLi>
+        <SB.Button as={Link} href="/moves" $size="large" $variant="soft">Moves</SB.Button>
+      </S.LinkLi>
+    </S.LinksList>
+  </S.Wrapper>;
 }
-
-const StMainNAv = styled.nav`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    background-color: #333;
-    color: #fff;
-`;
 
 export default MainNav;
 
