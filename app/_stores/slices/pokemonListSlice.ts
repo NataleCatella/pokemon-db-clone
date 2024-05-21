@@ -4,7 +4,7 @@ import {Pokemon} from "../../_types/Pokemon";
 interface PokemonListState {
   input: string,
   query: string;
-  selectedQueries: string[],
+  selectedPokemon: string;
   pagesCount: number,
   page: number,
   pokemons: Pokemon[];
@@ -13,7 +13,7 @@ interface PokemonListState {
 const initialState = {
   input: "",
   query: "",
-  selectedQueries: [],
+  selectedPokemon: "",
   pagesCount: 0,
   page: 1,
   pokemons: []

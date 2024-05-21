@@ -49,7 +49,7 @@ const Searchbar = () => {
     dispatch(setInput(event.target.value))
   }
 
-  return <SearchbarContainer>
+  return <SearchbarContainer $isSelectionOpen={isSelectionOpen}>
     <InputContainer $disabled={isLoading}>
       <SearchbarInput
         type="text"

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const SearchbarContainer = styled.div`
+interface isSelectionOpenProps {
+    $isSelectionOpen: boolean
+}
+
+export const SearchbarContainer = styled.div<isSelectionOpenProps>`
     position: relative;
     display: flex;
     align-items: center;
@@ -8,7 +12,7 @@ export const SearchbarContainer = styled.div`
     gap: 0;
     margin-bottom: 16px;
     margin-top: 16px;
-    z-index: 2;
+    z-index: 1;
 
     svg {
         position: absolute;
@@ -18,6 +22,10 @@ export const SearchbarContainer = styled.div`
         height: 16px;
         z-index: 3;
     }
+    
+    ${props => props.$isSelectionOpen && `
+        z-index: 2;
+    `}
 `
 
 interface InputContainerProps {

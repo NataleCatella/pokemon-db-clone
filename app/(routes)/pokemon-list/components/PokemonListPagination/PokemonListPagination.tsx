@@ -11,17 +11,19 @@ const PokemonListPagination: React.FC = () => {
   }
 
   return <PaginationContainer>
-    <ReactPaginate
-      breakLabel="..."
-      nextLabel=">"
-      onPageChange={handlePageClick}
-      pageRangeDisplayed={3}
-      marginPagesDisplayed={1}
-      pageCount={pagesCount}
-      previousLabel="<"
-      forcePage={page - 1}
-      renderOnZeroPageCount={null}
-    />
+    {pagesCount > 0 &&
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
+        pageCount={pagesCount}
+        previousLabel="<"
+        forcePage={page - 1}
+        renderOnZeroPageCount={null}
+      />
+    }
   </PaginationContainer>
 }
 

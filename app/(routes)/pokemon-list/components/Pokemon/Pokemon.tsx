@@ -1,38 +1,60 @@
 import type {Pokemon, PokemonType} from '@/app/_types/Pokemon';
-import {
-  PokemonCard,
-  LoadingContainer,
-  ErrorMessage,
-  PokemonSprite,
-  PokemonName,
-  PokemonTypes,
-  PokemonTypePill
-} from './Pokemon.styles';
+import {PokemonCard, PokemonExtendedContainer, PokemonContent} from './Pokemon.styles';
 import useFetchPokemonDetail from "@/app/(routes)/pokemon-list/hooks/useFetchPokemonDetail";
-import {memo} from "react";
-import {TbPokeball} from "react-icons/tb";
+import {memo, useEffect, useState} from "react";
+import {AnimatePresence, motion} from "framer-motion";
+import PokemonMainDetails from "./components/PokemonMainDetails/PokemonMainDetails";
+import PokemonAdditionalDetails from "./components/PokemonAdditionalDetails/PokemonAdditionalDetails";
 
 interface PokemonProps {
   pokemon: Pokemon;
 }
 
 const Pokemon: React.FC<PokemonProps> = memo(({pokemon}) => {
-  const {pokemonDetail, isLoading, error, status, isError, isSuccess} = useFetchPokemonDetail(pokemon.name)
+  const {pokemonDetail, isLoading, status, isError, isSuccess} = useFetchPokemonDetail(pokemon.name)
   const types = ((pokemonDetail?.types && pokemonDetail.types.map(type => type.type.name)) || []) as PokemonType[]
+  const [isWaitForAnimation, setIsWaitForAnimation] = useState(false)
+  const [isDetailOpen, setIsDetailOpen] = useState(false)
 
-  return <PokemonCard $type1={types[0]} $type2={types[1]} $error={isError}>
-    {isLoading && <LoadingContainer><TbPokeball/></LoadingContainer>}
-    <PokemonName>{pokemon.name}</PokemonName>
-    {isError && <ErrorMessage>Error: It has not been possible to complete the request. <br/>Please try again
-      later.</ErrorMessage>}
-    {isSuccess && pokemonDetail && <>
-      {pokemonDetail.sprites && <PokemonSprite src={pokemonDetail?.sprites.front_default || ''}/>}
-      <PokemonTypes>
-        {types.map(type => {
-          return <PokemonTypePill key={type} $type={type.toLowerCase() as PokemonType}>{type}</PokemonTypePill>
-        })}
-      </PokemonTypes>
-    </>}
+  const handleClick = () => {
+    setIsDetailOpen((prev) => !prev);
+  }
+
+  useEffect(() => {
+    if (isDetailOpen) {
+      setIsWaitForAnimation(true)
+    } else {
+      setTimeout(() => setIsWaitForAnimation(false), 300)
+    }
+  }, [isDetailOpen]);
+
+  return <PokemonCard $extended={isDetailOpen}
+                      $zHigher={isWaitForAnimation}>
+    <PokemonExtendedContainer $extended={isDetailOpen}
+                              onClick={handleClick}
+                              as={motion.div}
+                              layout>
+
+      <PokemonContent $type1={types[0]}
+                      $type2={types[1]}
+                      $error={isError}
+                      $extended={isDetailOpen}
+                      as={motion.div}
+                      layout>
+
+        <PokemonMainDetails pokemonDetail={pokemonDetail}
+                            extended={isDetailOpen}
+                            waitForAnimation={isWaitForAnimation}
+                            types={types}
+                            isLoading={isLoading}
+                            isError={isError}
+                            isSuccess/>
+
+        <AnimatePresence mode="sync">
+          {isDetailOpen && <PokemonAdditionalDetails pokemonDetail={pokemonDetail}/>}
+        </AnimatePresence>
+      </PokemonContent>
+    </PokemonExtendedContainer>
   </PokemonCard>
 }, (prevProps, nextProps) => {
   return prevProps.pokemon.name === nextProps.pokemon.name
