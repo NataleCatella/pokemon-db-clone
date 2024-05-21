@@ -1,6 +1,4 @@
 import styled, {css} from "styled-components";
-import NextLink from "next/link";
-import {Button} from "@/app/components/Button/Button.styled";
 
 const centralize = css`
     display: flex;
@@ -13,12 +11,17 @@ export const Wrapper = styled.nav`
     ${centralize};
     padding: 1rem;
     //background-color: #333;
-    color: #fff;
+    color: #cccccc;
 `;
 
 export const LogoContainer = styled.div`
     ${centralize};
-    margin-right: 32px;
+    margin-right: 16px;
+    
+    svg {
+        width: 32px;
+        height: 32px;
+    }
 `;
 
 export const LinksList = styled.ul`

@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 interface ButtonProps {
   $size?: "small" | "medium" | "large";
   $variant?: "default" | "soft" | "outline";
+  $active?: boolean;
 }
 
 const sizeStyles = {
@@ -51,7 +52,13 @@ const variantStyles = {
   `,
 };
 
-export const Button = styled.button<ButtonProps>`
+const activeStyles = {
+  soft: `background-color: var(--accent-6);`,
+  default: `background-color: var(--accent-11);`,
+  outline: `background-color: var(--accent-4);`,
+};
+
+export const ButtonStyles = css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -60,7 +67,23 @@ export const Button = styled.button<ButtonProps>`
     line-height: 1;
     user-select: none;
     transition: background-color 0.2s ease;
+`
 
+const ButtonStylesWProps = css<ButtonProps>`
     ${props => sizeStyles[props.$size || 'medium']}
     ${props => variantStyles[props.$variant || 'default']}
+    ${props => props.$active && activeStyles[props.$variant || 'default']}
+`
+
+const Button = styled.button<ButtonProps>`
+    ${ButtonStyles}
+    ${ButtonStylesWProps}
+
+    ${props => props.disabled && `
+      cursor: not-allowed;
+      background-color: var(--gray-4);
+      color: var(--gray-8);
+    `}
 `;
+
+export default Button;
