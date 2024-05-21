@@ -3,6 +3,9 @@
 This is a playground example, a small lightweight copy of the PokemonDB Clone.<br/>
 I use these playgrounds as an exercise and a possible showcase.<br/>
 
+![Screenshot](./public/readme.png)
+
+
 ## Stack
 `NextJs`, `React`, `Redux`, `TypeScript`, `TanstackQuery`, `styled-components`
 
