@@ -7,7 +7,7 @@ I use these playgrounds as an exercise and a possible showcase.<br/>
 
 
 ## Stack
-`NextJs`, `React`, `Redux`, `TypeScript`, `TanstackQuery`, `styled-components`
+`NextJs`, `React`, `Redux`, `TypeScript`, `TanstackQuery`, `styled-components`, `framer-motion`
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
