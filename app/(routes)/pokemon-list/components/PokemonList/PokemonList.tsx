@@ -1,8 +1,9 @@
 import Pokemon from "@/app/(routes)/pokemon-list/components/Pokemon/Pokemon";
-import {PokemonListSection, PokemonListContainer, LoadingIcon, ListLoader} from './PokemonList.styled';
+import {PokemonListSection, PokemonListContainer} from './PokemonList.styled';
 import PokemonListPagination from "@/app/(routes)/pokemon-list/components/PokemonListPagination/PokemonListPagination";
 import { TbPokeball } from "react-icons/tb";
 import useFetchPokemons from "@/app/(routes)/pokemon-list/hooks/useFetchPokemons";
+import {ListLoader, LoadingIcon} from "@/app/_styled/ListLoader.styled";
 
 const PokemonList = () => {
   const {

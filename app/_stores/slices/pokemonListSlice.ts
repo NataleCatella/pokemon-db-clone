@@ -41,5 +41,11 @@ const PokemonListSlice = createSlice({
   }
 })
 
-export const {setInput, setQuery, setPage, setPagesCount, setPokemons} = PokemonListSlice.actions;
+export const {
+  setInput,
+  setQuery,
+  setPage,
+  setPagesCount,
+  setPokemons
+} = PokemonListSlice.actions;
 export default PokemonListSlice.reducer;

@@ -1,11 +1,13 @@
 import {configureStore} from "@reduxjs/toolkit";
 
 import PokemonListSlice from "./slices/pokemonListSlice";
+import BerriesListSlice from "./slices/berriesSlice";
 
 export const makeStore = () => configureStore(
   {
     reducer: {
-      pokemonList: PokemonListSlice
+      pokemonList: PokemonListSlice,
+      berriesList: BerriesListSlice
     },
     devTools: process.env.NODE_ENV !== 'production',
   }

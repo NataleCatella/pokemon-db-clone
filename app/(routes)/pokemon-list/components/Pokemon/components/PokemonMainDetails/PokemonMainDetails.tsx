@@ -2,8 +2,6 @@ import {Pokemon, type PokemonType} from "@/app/_types/Pokemon";
 import {TbPokeball} from "react-icons/tb";
 
 import {
-  ErrorMessage,
-  LoadingContainer,
   MainDetails,
   PokemonName,
   PokemonSprite,
@@ -11,6 +9,8 @@ import {
   PokemonTypes
 } from "./PokemonMainDetails.styled";
 import {motion} from "framer-motion";
+import {LoadingContainer} from "@/app/_styled/CardLoader";
+import {ErrorMessage} from "@/app/_styled/ErrorMessage.styled";
 
 interface MainDetailsProps {
   pokemonDetail: Pokemon | undefined;

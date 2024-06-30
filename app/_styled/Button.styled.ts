@@ -35,7 +35,7 @@ const variantStyles = {
   `,
   default: `
     background-color: var(--accent-10);
-    color: var(--gray-0);
+    color: var(--white);
     
     &:hover {
         background-color: var(--accent-11);

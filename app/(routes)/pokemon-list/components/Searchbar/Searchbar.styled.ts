@@ -97,7 +97,7 @@ export const PokemonSelection = styled.div`
     gap: 0;
     justify-content: flex-start;
     align-items: flex-start;
-    background: var(--gray-0);
+    background: var(--white);
     width: 300px;
     max-height: 360px;
     overflow: auto;

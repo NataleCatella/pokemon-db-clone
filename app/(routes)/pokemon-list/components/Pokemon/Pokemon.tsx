@@ -1,5 +1,5 @@
 import type {Pokemon, PokemonType} from '@/app/_types/Pokemon';
-import {PokemonCard, PokemonExtendedContainer, PokemonContent} from './Pokemon.styles';
+import {PokemonCard, PokemonExtendedContainer, PokemonContent} from './Pokemon.styled';
 import useFetchPokemonDetail from "@/app/(routes)/pokemon-list/hooks/useFetchPokemonDetail";
 import {memo, useEffect, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";

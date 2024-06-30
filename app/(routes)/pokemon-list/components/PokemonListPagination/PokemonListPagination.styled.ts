@@ -19,7 +19,7 @@ export const PaginationContainer = styled.div`
         &.selected {
             a {
                 background-color: var(--green-8);
-                color: var(--gray-0);
+                color: var(--white);
             }
         }
     }

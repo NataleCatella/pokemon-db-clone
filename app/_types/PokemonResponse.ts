@@ -1,7 +1,7 @@
-import {Pokemon} from "@/app/_types/Pokemon";
+import {Pokemon} from "./Pokemon";
 
 export type PokemonResponse = {
-  count: 1302,
+  count: number,
   next: null,
   previous: null,
   results: Pokemon[]
