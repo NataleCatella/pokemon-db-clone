@@ -10,8 +10,8 @@ interface extendedProps {
 
 export const MainDetails = styled.div<extendedProps>`
     display: flex;
-    width: 255px;
-    flex: 0 0 255px;
+    width: 100%;
+    flex: 0 0 100%;
     height: 168px;
     flex-direction: column;
     align-items: center;
@@ -24,6 +24,8 @@ export const MainDetails = styled.div<extendedProps>`
       background-color: rgba(255,255,255, 0.1); 
       padding: 24px;
       border-radius: 4px;
+      width: 255px;
+      flex: 0 0 255px;
       
       ${PokemonSprite} {
         transform: scale(1) !important;
@@ -54,7 +56,7 @@ export const PokemonTypes = styled.div`
     gap: 5px;
 `
 
-type PokemonTypeProps = { $type: PokemonType };
+type PokemonTypeProps = { $type: PokemonType, size?: 'small' };
 
 export const PokemonTypePill = styled.div<PokemonTypeProps>`
     padding: 3px 6px;
@@ -65,4 +67,8 @@ export const PokemonTypePill = styled.div<PokemonTypeProps>`
     text-transform: capitalize;
     color: #ffffff;
     ${props => pokemonTypes[props.$type]}
+    ${props => props.size == 'small' && `
+        padding: 2px 4px;
+        font-size: 11px;
+    `};
 `

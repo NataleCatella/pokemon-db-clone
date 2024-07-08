@@ -87,6 +87,10 @@ export const BerryContent = styled.div<PokemonContentProps>`
         z-index: 2;
     }
 
+    @media (max-width: 991px) {
+        padding: 12px;
+    }
+
     ${props => props.$error && `
       border-color: var(--red-7);
       background-color: var(--red-1);

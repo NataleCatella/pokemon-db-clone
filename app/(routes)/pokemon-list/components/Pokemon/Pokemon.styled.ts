@@ -9,14 +9,14 @@ interface extendedProps {
 export const PokemonCard = styled.div<extendedProps>`
     position: relative;
     display: flex;
-    flex: 1 1 22%;
+    flex: 0 1 calc(25% - (10px * 3 / 4));
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 200px;
+    width: 22%;
     min-height: 187px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -24,7 +24,19 @@ export const PokemonCard = styled.div<extendedProps>`
 
     ${props => props.$zHigher && `
       z-index: 2;
-    `}
+    `};
+
+    @media (max-width: 991px) {
+        flex: 0 1 calc(33.33% - (10px * 2 / 3));
+    }
+
+    @media (max-width: 575px) {
+        flex: 0 1 calc(50% - (10px / 2));
+    }
+
+    @media (max-width: 359px) {
+        flex: 0 1 100%;
+    }
 `
 
 export const PokemonExtendedContainer = styled.div<extendedProps>`
